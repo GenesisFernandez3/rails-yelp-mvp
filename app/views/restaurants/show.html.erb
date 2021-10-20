@@ -1,0 +1,21 @@
+<h1><%= @restaurant.name %></h1>
+<h2><%= @restaurant.address %></h2>
+<h2><%= @restaurant.phone_number %></h2>
+<h2><%= @restaurant.category %></h2>
+<h2>Reviews</h2>
+<ul class="list-group">
+  <% @restaurant.reviews.each do |review| %>
+    <li class="list-group-item"><%= review.content %></li>
+    <li class="list-group-item"><%= review.rating %></li>
+  <% end %>
+</ul>
+
+<p class="btn btn-light"><%= link_to 'Add Review', new_restaurant_review_path(@restaurant)%></p>
+
+<p class="btn btn-light"><%= link_to 'Edit this restaurants', edit_restaurant_path%></p>
+<p class="btn btn-light"><%= link_to "Delete #{@restaurant.name}",
+            restaurant_path(@restaurant),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %></p>
+
+<p class="btn btn-light"><%= link_to 'Back to restaurants', restaurants_path%></p>
